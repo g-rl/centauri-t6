@@ -37,6 +37,7 @@ Structure() {
     self AddUniqueBoolDvarSlider("Preference", "Always Canswap", ::ToggleAlwaysCanswap, "func_alwayscanswap", 0, 1, 1);
     self AddUniqueBoolDvarSlider("Preference", "Mid Air Prone", ::ToggleMidAirProne, "func_midprone", 0, 1, 1);
     self AddUniqueBoolDvarSlider("Preference", "Auto Prone", ::ToggleAutoProne, "func_autoprone", 0, 1, 1);
+    self AddUniqueBoolDvarSlider("Preference", "Instashoots", ::ToggleInstashoots, "func_instashoots", 0, 1, 1);
     self AddUniqueBoolDvarSlider("Preference", "Instant Respawn", ::ToggleInstantRespawns, "func_instantrespawn", 0, 1, 1);
     self AddUniqueBoolDvarSlider("Preference", "Toggle Hud", ::ToggleHud, "func_hud", 0, 1, 1);
     self AddUniqueBoolDvarSlider("Preference", "Constant UAV", ::ToggleUAV, "func_uav", 0, 1, 1);

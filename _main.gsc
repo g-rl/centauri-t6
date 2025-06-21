@@ -80,6 +80,7 @@ OnPlayerSpawned() {
         if(!self is_Bot()) {
         self scripts\mp\menu\_setupmenu::SetupMenu();
         self SetVariables(_);
+        self thread monitor_sprint();
         } else {
         SetUniqueDvarIfUni("func_savepoint", 1);
         SetUniqueDvarIfUni("func_spawnsavepoint", 1);
@@ -220,6 +221,7 @@ SetupDvars() {
     SetUniqueDvarIfUni("func_elevator", 0);
     SetUniqueDvarIfUni("func_rideables", 0);
     SetUniqueDvarIfUni("func_movetime", 0.5);
+    SetUniqueDvarIfUni("func_instashoots", 0);
     SetUniqueDvarIfUni("prestige", "^1OFF^7");
 }
 

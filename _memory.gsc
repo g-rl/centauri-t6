@@ -47,6 +47,16 @@ MemNoClip() {
     }
 }
 
+MemInstashoots() {
+    z = GetUniqueDvar("func_instashoots");
+
+    if(z == 1 || z == "1")
+    {
+    self.instashoots = true;
+    self thread instashoots();
+    }
+}
+
 MemLunges() {
     self setPers("lunge", true);
     setdvar( "aim_automelee_enabled", 1 );

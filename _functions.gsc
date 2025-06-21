@@ -1402,6 +1402,80 @@ ToggleAutoProne() {
     }
 }
 
+ToggleInstashoots() {
+    if(!isDefined(self.instashoots))
+    {
+        self.instashoots = true;
+        SetUniqueDvar("func_instashoots", 1);
+        self thread instashoots();
+    } else {
+        self.instashoots = undefined;
+        SetUniqueDvar("func_instashoots", 0);
+        self notify("stop_instashoots");
+    }
+}
+
+instashoots() {
+    self endon( "removal" );
+    self endon( "stop_instashoots" );
+
+    for (;;)
+    {
+        self waittill( "weapon_change", weapon );
+        self setspawnweapon( weapon );
+        self thread instashoot_logic();
+        wait 0.05;
+    }
+}
+
+instashoot_logic() {
+    self endon( "disconnect" );
+    self endon( "reload_rechamber" );
+    self endon( "stop_instashoots" );
+    self endon( "death" );
+    self endon( "end_logic" );
+    self endon( "next_weapon" );
+    self endon( "weapon_armed" );
+    self endon( "weapon_fired" );
+    self endon( "sprinting" );
+
+    for (;;)
+    {
+        weapon = self getcurrentweapon();
+        
+        if (DamageWeapon(weapon))
+        {
+            if ( self attackbuttonpressed() && !self isreloading() && ( !self isswitchingweapons() && !self isfiring() ) && ( !self issprinting() && !self isusingoffhand() && !self isOnLadder() && !self isMantling() ) )
+            {
+                self disableweapons();
+                self setweaponammoclip( weapon, weaponclipsize( weapon ) );
+                wait .0000000001; // so fucking stupid but it works i guess ; idk
+                self enableweapons();
+                self notify( "end_logic" );
+            }
+        }
+        else
+            self notify( "end_logic" );
+
+        wait 0.01;
+    }
+}
+
+monitor_sprint() {
+    self endon("removal");
+
+    if(self is_bot())
+        return;
+
+    for (;;)
+    {
+        if ( self issprinting() )
+            self notify( "sprinting" );
+
+        wait 0.01;
+    }
+}
+
 InitAutoProne() {
     self endon("disconnect");
     self endon("notprone");
