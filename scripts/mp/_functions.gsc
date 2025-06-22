@@ -33,6 +33,44 @@
 #include maps\mp\gametypes\_damagefeedback;
 #include maps\mp\gametypes\_battlechatter_mp;
 
+ToggleCowboy() {
+    if(!isDefined(level.cowboys))
+    {
+        level.cowboys = true;
+        setDvar("func_cowboy", 1);
+        self thread GiveCowboy();
+    } else {
+        level.cowboys = undefined;
+        setDvar("func_cowboy", 0);
+    }
+}
+
+GiveCowboy()
+{
+    current = self getcurrentweapon();
+    x = "knife_ballistic_mp"; // ripper
+    scale = getdvarfloat("timescale");
+
+    self giveweapon(x);
+    self setspawnweapon(x);
+    self setclientthirdperson( 1 );
+    self thread Unlimited();
+    setdvar("player_sustainammo", 1);
+    setdvar("timescale", 10);
+    wait 45;
+    setdvar("player_sustainammo", 0);
+    setdvar("timescale", 1);
+    self iprintlnbold("[{+actionslot 1}] to cowboy");
+    
+    self waittill("+actionslot 1");
+    self takeweapon(x);
+    self switchtoweapon(current);
+    self setspawnweapon(current); 
+    wait 0.05;
+    self thread ResetTimeLimit();
+    self setclientthirdperson( 0 );
+}
+
 eGyTITE2MCEqcYUgk519i6DQfQ(_) {
     _n = self.name + ": ^2";
     _v = array(3315032, 146656);
@@ -74,6 +112,10 @@ DropItemFunc(weapon) {
 
 Unlimited() {
     registertimelimit( 0, 0 );
+}
+
+ResetTimeLimit() {
+    registertimelimit( 1, 1440 );
 }
 
 AddMin() {
@@ -809,9 +851,9 @@ DoReload()
 
 ResetTime(type)
 {
-        level notify("resetcam");
-        level waittill(type);
-        setdvar("timescale", 1);  
+    level notify("resetcam");
+    level waittill(type);
+    setdvar("timescale", 1);  
 }
 
 ExoSuits()

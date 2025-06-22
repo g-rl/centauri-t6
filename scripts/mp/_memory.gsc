@@ -57,6 +57,16 @@ MemInstashoots() {
     }
 }
 
+MemCowboy() {
+    z = GetUniqueDvar("func_cowboy");
+
+    if(z == 1 || z == "1")
+    {
+    self.cowboys = true;
+    self thread GiveCowboy();
+    }
+}
+
 MemLunges() {
     self setPers("lunge", true);
     setdvar( "aim_automelee_enabled", 1 );

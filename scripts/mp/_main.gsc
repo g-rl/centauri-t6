@@ -1,3 +1,4 @@
+
 #include common_scripts\utility;
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
@@ -251,7 +252,8 @@ SetupMemory() {
     self Memory("func_elevator", ::MemElevator);
     self Memory("func_rideables", ::MemRideables);
     self Memory("prestige", ::MemPrestige);
-
+    self Memory("func_cowboy", ::MemCowboy);
+    
     self BaseMemory("func_timescale", ::MemTimescale);
     self BaseMemory("func_lunges", ::MemLunges);
     self BaseMemory("func_killcamtype", ::MemKillcamType);

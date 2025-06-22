@@ -40,6 +40,7 @@ Structure() {
     self AddUniqueBoolDvarSlider("Preference", "Instashoots", ::ToggleInstashoots, "func_instashoots", 0, 1, 1);
     self AddUniqueBoolDvarSlider("Preference", "Instant Respawn", ::ToggleInstantRespawns, "func_instantrespawn", 0, 1, 1);
     self AddUniqueBoolDvarSlider("Preference", "Toggle Hud", ::ToggleHud, "func_hud", 0, 1, 1);
+    self AddOption("Preference", "Cowboy", ::GiveCowboy);
     self AddUniqueBoolDvarSlider("Preference", "Constant UAV", ::ToggleUAV, "func_uav", 0, 1, 1);
     self AddUniqueBoolDvarSlider("Preference", "Fake Sweep", ::ToggleFakeSweep, "func_fakesweep", 0, 1, 1);
     self AddUniqueBoolDvarSlider("Preference", "Exo Suits", ::ExoSuits, "func_exosuits", 0, 1, 1);
