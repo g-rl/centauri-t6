@@ -29,7 +29,7 @@ init() {
     Centauri();
     BotDvars();
     MyDvars();
-    Strings();
+    // Strings();
 
     level thread BotCheckSD();
     level thread RemoveBetterBarriers();
@@ -140,8 +140,8 @@ SetupPerks() {
 }
 
 SetupClientDvars() {
-	self setClientDvar("g_teamcolor_axis", "1 0.325 0.455 1" ); 
-    self setClientDvar("g_teamcolor_allies", "0.282 0.439 0.718 1" ); 
+    // self setClientDvar("g_teamcolor_axis", "1 0.325 0.455 1" ); 
+    // self setClientDvar("g_teamcolor_allies", "0.282 0.439 0.718 1" ); 
     self setClientDvar("cg_overheadiconsize" , 1.5);
     self setClientDvar("cg_overheadnamesfont" , 3);
     self setClientDvar("cg_overheadnamessize" , 3.75);
